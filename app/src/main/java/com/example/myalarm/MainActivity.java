@@ -55,17 +55,13 @@ public class MainActivity extends AppCompatActivity {
         setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                    NotificationChannel nc=new NotificationChannel("myAlarm","AlarmApp",NotificationManager.IMPORTANCE_HIGH);
-                    NotificationManager nm=getSystemService(NotificationManager.class);
-                    nm.createNotificationChannel(nc);
-                }
                 AlarmManager a=(AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 Intent i=new Intent(MainActivity.this,AlarmReceiver.class);
                 System.out.println("alarm :"+alarm);
                 i.putExtra("alarm",alarm);
                 PendingIntent p=PendingIntent.getBroadcast(MainActivity.this,0,i,PendingIntent.FLAG_IMMUTABLE);
                 a.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),p);
+
             }
         });
 
@@ -94,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, Integer.parseInt(min));
             calendar.set(Calendar.SECOND,0);
             calendar.set(Calendar.MILLISECOND,0);
-            System.out.println("Calendar"+calendar.getTimeInMillis());
         }
 
         return alarm1;
