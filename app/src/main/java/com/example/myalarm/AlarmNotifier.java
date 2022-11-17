@@ -55,7 +55,7 @@ public class AlarmNotifier extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 r.stop();
-                finish();
+                finishAndRemoveTask();
             }
         });
     }
