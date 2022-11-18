@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         textClock = findViewById(R.id.displayTime);
         setAlarm=findViewById(R.id.setAlarm);
 
-
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             timePicker.setHour(12);
             timePicker.setMinute(0);

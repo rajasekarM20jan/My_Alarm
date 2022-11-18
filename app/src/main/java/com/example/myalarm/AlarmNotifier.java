@@ -47,7 +47,22 @@ public class AlarmNotifier extends AppCompatActivity {
         r= RingtoneManager.getRingtone(AlarmNotifier.this
                 ,RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
 
-        r.play();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            r.setLooping(true);
+            r.play();
+        }else{
+            Timer t=new Timer();
+            t.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    r.play();
+                }
+            },100,1000);
+        }
+
+
+
+
 
 
 
